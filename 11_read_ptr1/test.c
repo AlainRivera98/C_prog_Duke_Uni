@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void g(int x, int * y) {
+
   printf("In g, x = %d, *y = %d\n", x, *y);
   x++;
   *y = *y - x;
