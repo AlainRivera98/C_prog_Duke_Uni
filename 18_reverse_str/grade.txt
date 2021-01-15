@@ -1,25 +1,20 @@
-Grading at Fri Jan 15 20:23:46 UTC 2021
+Grading at Fri Jan 15 21:02:40 UTC 2021
 Attempting to compile  reverse.c
 Your file matched the expected output
 Your output matched what we expected
 Removing your main() and replacing it with our own to run more tests...
 #################################################
 testcase2:
-NULL
-nullptr#################################################
-testcase3:
-Line_2_did_not_match
-Your file did not match the expected ouput
+ - Your program segfaulted.
 your code failed the testcase
+#################################################
+testcase3:
+Your file matched the expected output
 #################################################
 testcase4:
-Line_2_did_not_match
-Your file did not match the expected ouput
-your code failed the testcase
+Your file matched the expected output
 #################################################
 testcase5:
-Line_2_did_not_match
-Your file did not match the expected ouput
-your code failed the testcase
+Your file matched the expected output
 
-Overall Grade: F
+Overall Grade: C
