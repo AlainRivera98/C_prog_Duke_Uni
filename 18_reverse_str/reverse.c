@@ -3,10 +3,13 @@
 #include <string.h>
 
 void reverse(char * str) {
-  for(int i = strlen(str); i>0; i--){
-    printf("%c",str[i-1]);
+  if(str != NULL){
+    for(int i = strlen(str); i>0; i--){
+      printf("%c",str[i-1]);
+    }
+  } else {
+    printf("NULL");
   }
-      
   printf("\n");
 }
 
