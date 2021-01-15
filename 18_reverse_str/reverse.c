@@ -12,6 +12,8 @@ void reverse(char * str) {
 
     temp[strlen(str)] = '\0';
     strcpy(str,temp);
+  } else{
+    return;
   }
 }
 
@@ -28,5 +30,6 @@ int main(void) {
     reverse(array[i]);
     printf("%s\n", array[i]);
   }
-  return EXIT_SUCCESS;
+ 
+   return EXIT_SUCCESS;
 }
