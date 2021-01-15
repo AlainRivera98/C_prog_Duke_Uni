@@ -3,7 +3,11 @@
 #include <string.h>
 
 void reverse(char * str) {
-  //WRITE ME!
+  for(int i = strlen(str); i>0; i--){
+    printf("%c",str[i-1]);
+  }
+      
+  printf("\n");
 }
 
 int main(void) {
@@ -17,7 +21,7 @@ int main(void) {
   char * array[] = {str0, str1, str2, str3, str4, str5, str6};
   for (int i = 0; i < 7; i++) {
     reverse(array[i]);
-    printf("%s\n", array[i]);
+    //printf("%s\n", array[i]);
   }
   return EXIT_SUCCESS;
 }
