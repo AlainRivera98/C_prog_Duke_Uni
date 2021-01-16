@@ -3,16 +3,18 @@
 #include <string.h>
 
 void reverse(char * str) {
-  char temp[strlen(str)+1];
-  
+
   if(str != NULL){
+    char temp[strlen(str)+1];
+    
     for(int i = strlen(str); i>0; i--){
       temp[strlen(str)-i]=str[i-1];
     }
 
     temp[strlen(str)] = '\0';
     strcpy(str,temp);
-  } else{
+    
+  } else {
     return;
   }
 }
