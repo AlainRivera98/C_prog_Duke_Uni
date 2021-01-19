@@ -1,0 +1,75 @@
+Grading at Tue Jan 19 07:12:55 UTC 2021
+**Testing broken implementation 10 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 11 **
+-------------------------------------
+
+Case 2000^2 = 4000000 detected as wrong
+
+
+**Testing broken implementation 1 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 2 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 3 **
+-------------------------------------
+
+Case 0^0 = 1 detected as wrong
+
+
+**Testing broken implementation 4 **
+-------------------------------------
+
+Case 2000^2 = 4000000 detected as wrong
+
+
+**Testing broken implementation 5 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 6 **
+-------------------------------------
+
+Case 2000^2 = 4000000 detected as wrong
+
+
+**Testing broken implementation 7 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 8 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing broken implementation 9 **
+-------------------------------------
+
+Case 2^3 = 8 detected as wrong
+
+
+**Testing correct implementation **
+-------------------------------------
+
+
+All tests were ok.
+
+
+Overall Grade: PASSED
