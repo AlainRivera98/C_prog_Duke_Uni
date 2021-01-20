@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned power(unsigned x,unsigned y);
-
 unsigned power_helper(unsigned x, unsigned y, unsigned z){
 
   if(x == 0){
