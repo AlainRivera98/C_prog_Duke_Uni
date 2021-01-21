@@ -36,17 +36,14 @@ void shuffle(deck_t * d){
   size_t deckSize = d->n_cards;
   card_t ** card_arr = d->cards;
   card_t * temp;
-  for(int i = 0; i < 5; i++){
-    for(int j = 0; j < deckSize; j++){
-      int k = rand()%deckSize;
-      temp = card_arr[j];
-      card_arr[j] = card_arr[k];
-      card_arr[k] = temp;
+ 
+    for(int i = 0; i < deckSize; i++){
+      int j = rand()%deckSize;
+      temp = card_arr[i];
+      card_arr[i] = card_arr[j];
+      card_arr[j] = temp;
       
-    }
-
-  }
-  
+    }  
   
 }
 
