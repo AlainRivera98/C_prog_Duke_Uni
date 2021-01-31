@@ -36,6 +36,11 @@ int main(int argc, char ** argv){
   //Print rotated matrix
   //printf("\n\n");
   printMatrix(matrix);
+
+  if(fclose(f) != 0){
+    perror("Failed to close the file!");
+    return EXIT_FAILURE;
+  }
   
   return EXIT_SUCCESS;
 }
