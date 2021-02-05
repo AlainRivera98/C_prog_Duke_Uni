@@ -13,16 +13,6 @@ counts_t * createCounts(void) {
   return c;
 }
 
-one_count_t * newValue(const char * name){
-  one_count_t * newCount = malloc(sizeof(one_count_t));
-  
-  newCount->value = malloc((strlen(name) + 1)*sizeof(char));
-  strncpy(newCount->value,name, strlen(name) + 1);
-  newCount->count = 1;
-
-  return newCount;
-}
-
 void addCount(counts_t * c, const char * name) {
   if(name != NULL){
     for(size_t i = 0; i < c->n; i++){
@@ -35,7 +25,12 @@ void addCount(counts_t * c, const char * name) {
     //If new name/value
     //*c->array = *one_count_t
     c->array = realloc(c->array,(c->n + 1)*sizeof(*c->array));
-    c->array[c->n] = newValue(name);
+
+    c->array[c->n] = malloc(sizeof(one_count_t));
+    c->array[c->n]->value = malloc((strlen(name) + 1)*sizeof(char));
+    strncpy(c->array[c->n]->value,name, strlen(name) + 1);
+    c->array[c->n]->count = 1;
+
     c->n++;
     
   } else {
