@@ -13,6 +13,7 @@ card_t * add_empty_card(deck_t * deck);
 deck_t * make_deck_exclude(deck_t * excluded_cards);
 deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands);
 void free_deck(deck_t * deck);
+deck_t * emptyDeck(void);
 
 void print_hand(deck_t * hand);
 int deck_contains(deck_t * d, card_t c) ;

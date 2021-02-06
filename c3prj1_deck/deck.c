@@ -73,6 +73,14 @@ void free_deck(deck_t * deck){
   free(deck);
 }
 
+deck_t * emptyDeck(void){
+  deck_t * emptyDeck = malloc(sizeof(deck_t));
+  emptyDeck->n_cards = 0;
+  emptyDeck->cards = malloc(sizeof(*emptyDeck->cards));
+
+  return emptyDeck;
+}
+
 void print_hand(deck_t * hand){
 
   size_t handSize = hand->n_cards;

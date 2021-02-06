@@ -6,14 +6,6 @@
 #include "deck.h"
 #include "eval.h"
 
-deck_t * emptyDeck(void){
-  deck_t * emptyDeck = malloc(sizeof(deck_t));
-  emptyDeck->n_cards = 0;
-  emptyDeck->cards = malloc(sizeof(*emptyDeck->cards));
-
-  return emptyDeck;
-}
-
 deck_t *  build_deck(void){
   deck_t * d = emptyDeck();
   
