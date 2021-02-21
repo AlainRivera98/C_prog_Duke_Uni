@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "cards.h"
+#include "deck.h"
+#include "eval.h"
+#include "future.h"
+
+
+deck_t * build_hand(int offset){
+  deck_t * deck = emptyDeck();
+
+  for(unsigned i = 0; i < 52; i++){
+    card_t card = card_from_num(i);
+    add_card_to(deck, card);
+  }
+
+  shuffle(deck);
+
+  deck_t * hand = emptyDeck();
+
+  for(size_t i = 0; i < 5; i++){
+    card_t * c = deck->cards[i + offset];
+    add_card_to(hand, *c);
+  }
+
+  free_deck(deck);
+
+  return hand;
+}
+
+
+int main(void){
+  deck_t * hand = build_hand(0);
+  deck_t * hand2 = build_hand(5);
+
+  print_hand(hand);
+  printf("\n");
+  print_hand(hand2);
+  printf("\n");
+  
+  future_cards_t * fc = empty_future();
+
+  card_t * emptyCard = add_empty_card(hand);
+  add_future_card(fc,2,emptyCard);
+
+  emptyCard = add_empty_card(hand);
+  add_future_card(fc,0,emptyCard);
+
+  future_cards_from_deck(hand2, fc);
+
+  print_hand(hand);
+  printf("\n");
+
+  free_future(fc);
+  free_deck(hand);
+  free_deck(hand2);
+  
+  return(EXIT_SUCCESS);
+}
