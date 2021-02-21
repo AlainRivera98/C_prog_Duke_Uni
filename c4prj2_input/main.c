@@ -20,7 +20,7 @@ deck_t * build_hand(){
 
   deck_t * hand = emptyDeck();
 
-  for(size_t i = 0; i < 5; i++){
+  for(size_t i = 0; i < 13; i++){
     card_t *c = deck->cards[i];
     add_card_to(hand, *c);
   }
@@ -53,14 +53,14 @@ int main(int argc, char ** argv){
   future_cards_from_deck(unknown_hand, fc);
 
   for(size_t i = 0; i < n_hands; i++){
-    
-    //print_hand(handArray[i]);
-    //printf("\n");
+    print_hand(handArray[i]);
+    printf("\n");
     free_deck(handArray[i]);
   }
-  //printf("\nUnknown hand:\n");
-  //print_hand(unknown_hand);
-
+  printf("\nUnknown hand:\n");
+  print_hand(unknown_hand);
+  printf("\n\n");
+  
   free(handArray);
   
   if(fclose(f) != 0){
@@ -73,58 +73,3 @@ int main(int argc, char ** argv){
   
   return(EXIT_SUCCESS);
 }
-
-
-/*
-deck_t * build_hand(int offset){
-  deck_t * deck = emptyDeck();
-
-  for(unsigned i = 0; i < 52; i++){
-    card_t card = card_from_num(i);
-    add_card_to(deck, card);
-  }
-
-  shuffle(deck);
-
-  deck_t * hand = emptyDeck();
-
-  for(size_t i = 0; i < 5; i++){
-    card_t * c = deck->cards[i + offset];
-    add_card_to(hand, *c);
-  }
-
-  free_deck(deck);
-
-  return hand;
-}
-
-
-int main(void){
-  deck_t * hand = build_hand(0);
-  deck_t * hand2 = build_hand(5);
-
-  print_hand(hand);
-  printf("\n");
-  print_hand(hand2);
-  printf("\n");
-  
-  future_cards_t * fc = empty_future();
-
-  card_t * emptyCard = add_empty_card(hand);
-  add_future_card(fc,2,emptyCard);
-
-  emptyCard = add_empty_card(hand);
-  add_future_card(fc,0,emptyCard);
-
-  future_cards_from_deck(hand2, fc);
-
-  print_hand(hand);
-  printf("\n");
-
-  free_future(fc);
-  free_deck(hand);
-  free_deck(hand2);
-  
-  return(EXIT_SUCCESS);
-}
-*/
