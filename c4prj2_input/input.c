@@ -7,6 +7,8 @@
 void checkSpace(const char *c);
 void deleteSpace(const char ** c);
 
+//File has to be opened, but this function won't close it:
+//both things must be done outside the function
 deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   deck_t ** handArray = malloc(sizeof(*handArray));
 
@@ -45,6 +47,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     deleteSpace(&c);
     
     if(strlen(c) >= 3){
+      //Checks normal cards
       if((*c) != '?'){
        	card_t card = card_from_letters(*c,*(c+1));
 	add_card_to(deck, card);
@@ -52,10 +55,10 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 	c+=2;
 	checkSpace(c);
 	c++;
-	
       } else {
 	c++;
-
+	//checks unknown cards
+	//they start with a '?'
 	if(isdigit(*c)){
 	  if(isdigit(*(c+1))){
 	    char num[3];
@@ -120,7 +123,6 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 }
 
 void checkSpace(const char *c){
-
   if((*c) != ' ' && (*c) != '\n'){
     perror("No space where it should be\n");
     exit(EXIT_FAILURE);
@@ -133,6 +135,7 @@ void checkSpace(const char *c){
   
 }
 
+//Deletes trailing spaces
 void deleteSpace(const char ** c){
   while((**c) == ' '){
     (*c)++;

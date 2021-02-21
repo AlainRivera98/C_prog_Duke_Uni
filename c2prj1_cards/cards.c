@@ -9,6 +9,7 @@ void assert_card_valid(card_t c) {
   assert(c.suit>=SPADES && c.suit<=CLUBS);
 }
 
+//Straight flush is the best hand, and is the lowest (0) in this enum
 const char * ranking_to_string(hand_ranking_t r) {
   switch(r){  
     case STRAIGHT_FLUSH: return "STRAIGHT_FLUSH"; break;
@@ -59,6 +60,8 @@ char suit_letter(card_t c) {
   
 }
 
+//Don't print unknown cards or there will be errors,
+//because the function asserts valid cards
 void print_card(card_t c) {
   assert_card_valid(c);
   printf("%c%c",value_letter(c),suit_letter(c));

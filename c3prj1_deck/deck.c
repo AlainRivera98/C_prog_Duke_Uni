@@ -3,8 +3,8 @@
 #include <assert.h>
 #include "deck.h"
 
+//adds cards (not pointers) to an ALREADY INITIALIZED deck 
 void add_card_to(deck_t * deck, card_t c){
-
   deck->cards = realloc(deck->cards,(deck->n_cards + 1)*sizeof(*deck->cards));
   deck->cards[deck->n_cards] = malloc(sizeof(card_t));
   
@@ -14,10 +14,12 @@ void add_card_to(deck_t * deck, card_t c){
   deck->n_cards++;
 }
 
+//Assigns an "invalid" card (00) to fill for unknown cards,
+//and returns a pointer to replace it later
 card_t * add_empty_card(deck_t * deck){
   card_t * c = malloc(sizeof(card_t));
   c->value = 0;
-  c->suit = 10;
+  c->suit = 0;
   add_card_to(deck, *c);
 
   free(c);
@@ -81,8 +83,9 @@ deck_t * emptyDeck(void){
   return emptyDeck;
 }
 
+//Don't print hands with unknown cards,
+//because print_card will fail the assert
 void print_hand(deck_t * hand){
-
   size_t handSize = hand->n_cards;
   card_t ** card_arr = hand->cards; //array of pointers to card_t structs
 
@@ -93,7 +96,6 @@ void print_hand(deck_t * hand){
 }
 
 int deck_contains(deck_t * d, card_t c) {
-
   assert_card_valid (c);
   int status = 0;
   size_t handSize = d->n_cards;

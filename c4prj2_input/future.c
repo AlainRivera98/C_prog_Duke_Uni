@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "future.h"
 
+//add future cards to an INITIALIZED future_cards_t
 void add_future_card(future_cards_t * fc, size_t index, card_t * ptr){
   if(index >= fc->n_decks){
     //*fc->decks == deck_t
@@ -21,6 +22,7 @@ void add_future_card(future_cards_t * fc, size_t index, card_t * ptr){
   
 }
 
+//Fills future_cards_t fc with cards in deck
 void future_cards_from_deck(deck_t * deck, future_cards_t * fc){
   if(deck->n_cards < fc->n_decks){
     perror("Amount of cards in deck is less than in future cards\n");

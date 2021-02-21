@@ -3,8 +3,10 @@
 #include <stdlib.h>
 #include <assert.h>
 
+//Helper function for qsort
+//Multiplies *-1 because qsort sorts in ascending order
+//and we want descending order
 int card_ptr_comp(const void * vp1, const void * vp2) {
-
   const card_t * const * cp1 = vp1;
   const card_t * const * cp2 = vp2;
 
@@ -18,6 +20,7 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
   return diff;
 }
 
+//determines flushes
 suit_t flush_suit(deck_t * hand) {
   size_t handSize = hand->n_cards;
   card_t ** card_arr = hand->cards;
@@ -52,7 +55,6 @@ suit_t flush_suit(deck_t * hand) {
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
-
   unsigned largest = 0;
 
   for(int i = 0; i < n; i++){
@@ -64,8 +66,9 @@ unsigned get_largest_element(unsigned * arr, size_t n) {
   return largest;
 }
 
+//returns the lowest index (match_counts) whose value is the n_of_akind,
+//to find this groupe in the hand later
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
   for(size_t i = 0; i < n; i++){
     if(match_counts[i] == n_of_akind){
       return i;
@@ -97,7 +100,6 @@ ssize_t  find_secondary_pair(deck_t * hand,
 }
 
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
-
   int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n);
   int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs);
 
@@ -160,7 +162,6 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n){
   return 0;
   
 }
-
 
 int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs){
   size_t handSize = hand->n_cards;
@@ -273,6 +274,10 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
 //implementation in eval-c4.o) so that the
 //other functions we have provided can make
 //use of get_match_counts.
+
+//allocates array of unsigned ints with as many elements
+//as there are cards in the hand: basically, how many times
+//a card of the same value appears in the hand
 unsigned * get_match_counts(deck_t * hand){
   unsigned * match_counts = malloc((hand->n_cards)*sizeof(unsigned));
 
