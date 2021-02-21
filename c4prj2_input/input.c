@@ -5,6 +5,7 @@
 #include "input.h"
 
 void checkSpace(const char *c);
+void deleteSpace(const char ** c);
 
 deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   deck_t ** handArray = malloc(sizeof(*handArray));
@@ -40,9 +41,12 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   int cardCount = 0;
 
   while((*c) != '\0'){
+    
+    deleteSpace(&c);
+    
     if(strlen(c) >= 3){
       if((*c) != '?'){
-	card_t card = card_from_letters(*c,*(c+1));
+       	card_t card = card_from_letters(*c,*(c+1));
 	add_card_to(deck, card);
 	
 	c+=2;
@@ -89,12 +93,18 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
 	}
 	
 	checkSpace(c);
-	c++;	
+	c++;
       }
       
     } else {
-      perror("String is on wrong format. Perhaps too short\n");
-      exit(EXIT_FAILURE);
+      deleteSpace(&c);
+      if((*c) == '\n'){
+	c++;
+      } else {
+	printf("Jeje, aqui ta el error:%s%s%s\n","...",c,"...");
+	perror("String is on wrong format. Perhaps too short\n");
+	exit(EXIT_FAILURE);
+      }
     }
 
     cardCount++;
@@ -121,4 +131,10 @@ void checkSpace(const char *c){
     }
   }
   
+}
+
+void deleteSpace(const char ** c){
+  while((**c) == ' '){
+    (*c)++;
+  }
 }
