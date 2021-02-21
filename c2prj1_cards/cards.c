@@ -5,9 +5,6 @@
 
 
 void assert_card_valid(card_t c) {
-  if(!(c.value>=2 && c.value<=VALUE_ACE)){
-    printf("Error: value: %d\t suit: %d\n",c.value,c.suit);
-  }
   assert(c.value>=2 && c.value<=VALUE_ACE);
   assert(c.suit>=SPADES && c.suit<=CLUBS);
 }
